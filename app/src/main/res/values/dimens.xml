@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="photos_list_spacing">8dp</dimen>
+    <dimen name="dp10">10dp</dimen>
+    <dimen name="item_offset">8dp</dimen>
+    <dimen name="dp8">8dp</dimen>
+    <dimen name="dp80">80dp</dimen>
+    <dimen name="dp200">200dp</dimen>
+</resources>

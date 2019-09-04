@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "43456481988",
+    "firebase_url": "https://talkative-77a17.firebaseio.com",
+    "project_id": "talkative-77a17",
+    "storage_bucket": "talkative-77a17.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:43456481988:android:21f6e6b9b7a05cb2",
+        "android_client_info": {
+          "package_name": "com.appocean.callingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "43456481988-elg3485unj9634ebukh6ko8q285v0osk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWUepOiOpJF6dmAw-3tu_cLmKATWOrRGU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "43456481988-elg3485unj9634ebukh6ko8q285v0osk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
