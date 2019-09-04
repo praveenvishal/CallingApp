@@ -9,7 +9,6 @@ import com.appocean.callingapp.phonenumberui.utility.Utility;
 import com.appocean.callingapp.util.SessionManager;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
