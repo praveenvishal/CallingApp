@@ -41,6 +41,7 @@ import com.appocean.callingapp.rtc.LooperExecutor;
 import com.appocean.callingapp.rtc.PeerConnectionClient;
 import com.appocean.callingapp.rtc.UnhandledExceptionHandler;
 import com.appocean.callingapp.rtc.WebSocketRTCClient;
+import com.appocean.callingapp.util.SessionManager;
 
 import org.webrtc.Camera1Enumerator;
 import org.webrtc.Camera2Enumerator;
@@ -67,6 +68,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import java.util.TimeZone;
+
+import static com.appocean.callingapp.util.PrefConstant.USER_ID;
 
 /**
  * Activity for peer connection call setup, call waiting
@@ -705,6 +708,7 @@ public class CallActivity extends Activity implements AppRTCClient.SignalingEven
                 // Create answer. Answer SDP will be sent to offering client in
                 // PeerConnectionEvents.onLocalDescription event.
                 peerConnectionClient.createAnswer();
+                mFirebase.updateUserInfo(room, SessionManager.getInstance().getString(USER_ID));
             }
             if (params.iceCandidates != null) {
                 // Add remote ICE candidates from room.

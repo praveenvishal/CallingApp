@@ -1,6 +1,21 @@
 package com.appocean.callingapp;
 
 import android.os.Bundle;
+import android.util.Log;
+
+import com.appocean.callingapp.databinding.ActivityCreateRoomBinding;
+import com.appocean.callingapp.firebase.FirebaseUsecase;
+import com.appocean.callingapp.firebase.FirebaseWrapper;
+import com.appocean.callingapp.model.Room;
+import com.appocean.callingapp.util.ItemDecorationAlbumColumns;
+import com.appocean.callingapp.util.SessionManager;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,19 +25,17 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.appocean.callingapp.databinding.ActivityCreateRoomBinding;
-import com.appocean.callingapp.model.Room;
-import com.appocean.callingapp.util.ItemDecorationAlbumColumns;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import static com.appocean.callingapp.util.PrefConstant.USER_ID;
 
 public class CreateRoomActivity extends AppCompatActivity implements RoomAdapter.ClickListener {
     ActivityCreateRoomBinding mBinding;
     RoomAdapter roomAdapter;
     List<Room> roomList = new ArrayList<>();
     GridLayoutManager gridLayoutManager;
+    private FirebaseUsecase mFirebase;
+    private String uid;
+    private FirebaseFirestore db;
+    public String roomId = "";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,14 +43,16 @@ public class CreateRoomActivity extends AppCompatActivity implements RoomAdapter
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_create_room);
         setUpToolBar();
         initRecyclerView();
+        mFirebase = new FirebaseWrapper(this);
+        db = FirebaseFirestore.getInstance();
     }
 
     private void setUpToolBar() {
         Toolbar mToolBar = findViewById(R.id.toolbar);
         mToolBar.setTitleTextColor(ContextCompat.getColor(this, R.color.white));
         setSupportActionBar(mToolBar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        //  getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        // getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle(getString(R.string.toolbarTextHome));
 
     }
@@ -58,7 +73,6 @@ public class CreateRoomActivity extends AppCompatActivity implements RoomAdapter
         roomList = createRoomList();
         roomAdapter.setRooms(roomList);
 
-
     }
 
     public List<Room> createRoomList() {
@@ -76,7 +90,34 @@ public class CreateRoomActivity extends AppCompatActivity implements RoomAdapter
     public void onRoomClicked(Room room) {
         RoomConnectionManager connectionManager = new RoomConnectionManager(this);
         connectionManager.connectToRoom(this, room, false, false, false, 0);
+        uid = SessionManager.getInstance().getString(USER_ID);
+        if (!roomId.equals("") && uid != null && !uid.equals(""))
+            mFirebase.deleteUser(roomId, uid);
+        roomId = room.getRoomName();
 
+        addUserToRoom(room);
+        getRoomUser(room);
+    }
 
+    private void getRoomUser(Room room) {
+        mFirebase.getUsersInRoom(room, new FirebaseWrapper.QueryCallback() {
+            @Override
+            public void onQueryResult(QuerySnapshot querySnapshot) {
+                for (DocumentSnapshot documentSnapshot : querySnapshot) {
+                    Log.e("User Info", documentSnapshot.toString());
+                }
+            }
+        });
+    }
+
+    private void addUserToRoom(Room room) {
+        mFirebase.addUserToRoom(room, uid);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (!roomId.equals("") && uid != null && !uid.equals(""))
+            mFirebase.deleteUser(roomId, uid);
     }
 }
