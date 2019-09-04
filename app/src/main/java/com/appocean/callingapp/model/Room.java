@@ -6,6 +6,24 @@ public class Room implements Serializable {
     private String roomName;
     private boolean isInitiator;
     private boolean isCurrentlyActive;
+    private String gender;
+    private String dob;
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
 
     public boolean isCurrentlyActive() {
         return isCurrentlyActive;
