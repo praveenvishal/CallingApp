@@ -79,15 +79,12 @@
         <activity
             android:name=".phonenumberui.PhoneNumberActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar.FullScreen">
-        </activity>
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar.FullScreen"></activity>
 
         <activity
             android:name=".TutorialActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar.FullScreen">
-        </activity>
-
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar.FullScreen"></activity>
 
 
         <activity
@@ -97,6 +94,28 @@
         <activity
             android:name=".phonenumberui.VerificationCodeActivity"
             android:screenOrientation="portrait"></activity>
+
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_id" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/facebook_id_scheme" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
