@@ -4,12 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.appocean.callingapp.databinding.ActivityAuthBinding;
+import com.appocean.callingapp.phonenumberui.PhoneNumberActivity;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-
-import com.appocean.callingapp.databinding.ActivityAuthBinding;
-import com.appocean.callingapp.phonenumberui.PhoneNumberActivity;
 
 public class AuthActivity extends AppCompatActivity implements View.OnClickListener {
     ActivityAuthBinding mBinding;
@@ -39,7 +39,7 @@ public class AuthActivity extends AppCompatActivity implements View.OnClickListe
     private void verify() {
         Intent intent = new Intent(AuthActivity.this, PhoneNumberActivity.class);
         intent.putExtra("", getResources().getString(R.string.app_name));
-        intent.putExtra("PHONE_NUMBER","" );
+        intent.putExtra("PHONE_NUMBER", "");
         startActivityForResult(intent, REQUEST_PHONE_VERIFICATION);
     }
 
