@@ -1,80 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    style="@style/loginCard"
-    android:layout_gravity="center"
-    android:layout_marginTop="@dimen/loginViewsMargin"
-    android:layout_marginBottom="@dimen/loginViewsMargin"
-    android:background="@color/whiteCardColor"
-    android:elevation="5dp"
-    app:cardCornerRadius="@dimen/loginCardRadius">
+    xmlns:soulwolf="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        style="@style/linearParent"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:padding="@dimen/loginViewsMargin">
+        android:layout_marginTop="@dimen/loginViewsMargin"
+        android:layout_marginBottom="@dimen/loginViewsMargin"
+        android:background="@color/whiteCardColor"
+        android:gravity="center_horizontal">
+
 
         <TextView
-            style="@style/headerTextPrimary"
-            android:layout_marginTop="@dimen/loginViewsMargin"
-            android:text="@string/register" />
+            android:id="@+id/selectGender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select your Gender" />
 
-        <android.support.design.widget.TextInputLayout
-            style="@style/parent"
-            android:layout_marginTop="@dimen/signup_text_margin_top">
+        <net.soulwolf.widget.materialradio.MaterialRadioGroup
+            android:id="@+id/genderContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-            <EditText
-                style="@style/modifiedEditText"
-                android:hint="Name"
-                android:inputType="text"
-                android:maxLines="1" />
-        </android.support.design.widget.TextInputLayout>
+            <net.soulwolf.widget.materialradio.MaterialRadioButton
+                android:layout_width="@dimen/dp150"
+                android:layout_height="wrap_content"
+                soulwolf:mcAnimator="true"
+                soulwolf:mcButton="@drawable/radio_button_boy_selector"
+                soulwolf:mcChecked="true"
+                soulwolf:mcPadding="5dp"
+                soulwolf:mcText="@string/male"
+                soulwolf:mcTextColor="@drawable/radio_button_text_selector"
+                soulwolf:mcTextSize="6sp" />
 
-        <android.support.design.widget.TextInputLayout
-            style="@style/parent"
-            android:layout_marginTop="@dimen/signup_text_margin_top">
-
-            <EditText
-                style="@style/modifiedEditText"
-                android:hint="Mobile Number"
-                android:inputType="text"
-                android:maxLines="1" />
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            style="@style/parent"
-            android:layout_marginTop="@dimen/signup_text_margin_top">
-
-            <EditText
-                style="@style/modifiedEditText"
-                android:hint="@string/login_email_hint"
-                android:inputType="textEmailAddress"
-                android:maxLines="1" />
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            style="@style/parent"
-            android:layout_marginTop="@dimen/signup_text_margin_top">
-
-            <EditText
-                style="@style/modifiedEditText"
-                android:hint="@string/login_password_hint"
-                android:inputType="textPassword"
-                android:maxLines="1" />
-        </android.support.design.widget.TextInputLayout>
-
-        <Button
-            style="@style/loginButton"
-            android:layout_gravity="center"
-            android:text="Register" />
+            <net.soulwolf.widget.materialradio.MaterialRadioButton
+                android:layout_width="@dimen/dp150"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                soulwolf:mcAnimator="true"
+                soulwolf:mcButton="@drawable/radio_button_girl_selector"
+                soulwolf:mcPadding="5dp"
+                soulwolf:mcText="@string/female"
+                soulwolf:mcTextColor="@drawable/radio_button_text_selector"
+                soulwolf:mcTextSize="6sp" />
+        </net.soulwolf.widget.materialradio.MaterialRadioGroup>
 
         <TextView
-            style="@style/parent"
-            android:layout_marginTop="@dimen/loginViewsMargin"
-            android:text="@string/signup_login_hint"
-            android:textAlignment="center"
-            android:textColor="@color/primaryTextColor"
-            android:textStyle="bold" />
+            android:id="@+id/dobTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/dobPicker"
+            android:text="@string/select_your_dob" />
 
-    </LinearLayout>
-</androidx.cardview.widget.CardView>
+        <com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker
+            android:id="@+id/dobPicker"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_alignParentBottom="true"
+            app:picker_curved="true"
+            app:picker_cyclic="true"
+            app:picker_displayDays="true"
+            app:picker_displayHours="false"
+            app:picker_displayMinutes="false"
+            app:picker_displayMonth="true"
+            app:picker_displayYears="true"
+            app:picker_mustBeOnFuture="false"
+            app:picker_visibleItemCount="7" />
+    </RelativeLayout>
+</layout>

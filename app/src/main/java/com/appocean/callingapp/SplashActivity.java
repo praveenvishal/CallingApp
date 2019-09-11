@@ -5,15 +5,15 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-
 import com.appocean.callingapp.databinding.ActivitySplashBinding;
 import com.appocean.callingapp.phonenumberui.PhoneNumberActivity;
 import com.appocean.callingapp.util.PrefConstant;
 import com.appocean.callingapp.util.SessionManager;
 import com.appocean.callingapp.util.Util;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -23,7 +23,7 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mBinding= DataBindingUtil.setContentView(this,R.layout.activity_splash);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_splash);
         mBinding.splashAnimation1.playAnimation();
         mBinding.splashAnimation2.playAnimation();
         mBinding.splashAnimation3.playAnimation();
@@ -45,7 +45,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 String uId = SessionManager.getInstance().getString(PrefConstant.USER_ID);
                 if (!TextUtils.isEmpty(uId)) {
-                    Intent intent = new Intent(SplashActivity.this, CreateRoomActivity.class);
+                    Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                     startActivity(intent);
                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 

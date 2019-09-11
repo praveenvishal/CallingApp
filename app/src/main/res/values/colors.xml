@@ -13,5 +13,6 @@
 
     <!--colros for card-->
     <color name="whiteCardColor">#fff</color>
-
+    <color name="mc_title_bar">#FF16C2DD</color>
+    <color name="mc_state_pressed">#FF1088DD</color>
 </resources>
