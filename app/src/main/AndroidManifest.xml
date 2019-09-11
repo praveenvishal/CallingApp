@@ -116,6 +116,7 @@
                 <data android:scheme="@string/facebook_id_scheme" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

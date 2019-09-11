@@ -26,15 +26,6 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.AppCompatEditText;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.ContextCompat;
-
 import com.appocean.callingapp.CreateRoomActivity;
 import com.appocean.callingapp.R;
 import com.appocean.callingapp.phonenumberui.utility.Utility;
@@ -53,6 +44,15 @@ import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.concurrent.TimeUnit;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 
 public class VerificationCodeActivity extends AppCompatActivity {
@@ -144,7 +144,7 @@ public class VerificationCodeActivity extends AppCompatActivity {
                             pbVerify.setVisibility(View.GONE);
                             final FirebaseUser user = task.getResult().getUser();
                             Utility.showToast(VerificationCodeActivity.this, user.getPhoneNumber() + getString(R.string.text_verifirfied_successfully));
-                            SessionManager.getInstance().save(PrefConstant.USER_ID,user.getUid());
+                            SessionManager.getInstance().save(PrefConstant.USER_ID, user.getUid());
                             new Handler().postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
