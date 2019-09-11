@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.airbnb.lottie.TextDelegate;
 import com.appocean.callingapp.databinding.ActivitySplashBinding;
 import com.appocean.callingapp.phonenumberui.PhoneNumberActivity;
 import com.appocean.callingapp.util.PrefConstant;
@@ -19,22 +20,16 @@ public class SplashActivity extends AppCompatActivity {
 
     private static final long SPLASH_TIME = 10000;
     ActivitySplashBinding mBinding;
+    TextDelegate textDelegate;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding= DataBindingUtil.setContentView(this,R.layout.activity_splash);
-        mBinding.splashAnimation1.playAnimation();
-        mBinding.splashAnimation2.playAnimation();
-        mBinding.splashAnimation3.playAnimation();
-        mBinding.splashAnimation4.playAnimation();
-        mBinding.splashAnimation5.playAnimation();
-        mBinding.splashAnimation10.playAnimation();
-        mBinding.splashAnimation7.playAnimation();
-        mBinding.splashAnimation8.playAnimation();
-        mBinding.splashAnimation9.playAnimation();
-
-
+        mBinding.splashAnimation.playAnimation();
+        textDelegate = new TextDelegate(mBinding.splashAnimation);
+        mBinding.splashAnimation.setTextDelegate(textDelegate);
+        textDelegate.setText("NAME","TALKATIVE");
         navigate();
 
     }

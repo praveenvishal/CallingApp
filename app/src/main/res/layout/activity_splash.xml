@@ -4,100 +4,22 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bg_login"
-        android:orientation="vertical">
-
+        android:layout_height="match_parent">
         <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/splashAnimation1"
-            android:layout_width="@dimen/dp80"
-            android:layout_height="@dimen/dp80"
+            android:id="@+id/splashAnimation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="logo.json"
+            app:lottie_loop="true" />
+
+        <TextView
             android:layout_gravity="center"
-            android:scaleType="centerCrop"
-            app:lottie_autoPlay="true"
-            app:lottie_fileName="people.json"
-            app:lottie_loop="true" />
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/splashAnimation2"
-            android:layout_width="@dimen/dp80"
-            android:layout_height="@dimen/dp80"
-            android:layout_gravity="top|center_horizontal"
-            android:scaleType="centerCrop"
-            app:lottie_autoPlay="true"
-            app:lottie_fileName="people.json"
-            app:lottie_loop="true" />
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/splashAnimation3"
-            android:layout_width="@dimen/dp80"
-            android:layout_height="@dimen/dp80"
-            android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginBottom="@dimen/dp8"
-            android:scaleType="centerCrop"
-            app:lottie_autoPlay="true"
-            app:lottie_fileName="people.json"
-            app:lottie_loop="true" />
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/splashAnimation4"
-            android:layout_width="@dimen/dp80"
-            android:layout_height="@dimen/dp80"
-            android:layout_gravity="left|center_vertical"
-            android:scaleType="centerCrop"
-            app:lottie_autoPlay="true"
-            app:lottie_fileName="people.json"
-            app:lottie_loop="true" />
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/splashAnimation5"
-            android:layout_width="@dimen/dp80"
-            android:layout_height="@dimen/dp80"
-            android:layout_gravity="right|center_vertical"
-            android:scaleType="centerCrop"
-            app:lottie_autoPlay="true"
-            app:lottie_fileName="people.json"
-            app:lottie_loop="true" />
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/splashAnimation10"
-            android:layout_width="@dimen/dp80"
-            android:layout_height="@dimen/dp80"
-            android:layout_gravity="top|start"
-            android:scaleType="centerCrop"
-            app:lottie_autoPlay="true"
-            app:lottie_fileName="people.json"
-            app:lottie_loop="true" />
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/splashAnimation9"
-            android:layout_width="@dimen/dp80"
-            android:layout_height="@dimen/dp80"
-            android:layout_gravity="top|end"
-            android:scaleType="centerCrop"
-            app:lottie_autoPlay="true"
-            app:lottie_fileName="people.json"
-            app:lottie_loop="true" />
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/splashAnimation8"
-            android:layout_width="@dimen/dp80"
-            android:layout_gravity="bottom|start"
-            android:layout_height="@dimen/dp80"
-            android:scaleType="centerCrop"
-            app:lottie_autoPlay="true"
-            app:lottie_fileName="people.json"
-            app:lottie_loop="true" />
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/splashAnimation7"
-            android:layout_width="@dimen/dp80"
-            android:layout_height="@dimen/dp80"
-            android:scaleType="centerCrop"
-            android:layout_gravity="bottom|end"
-            app:lottie_autoPlay="true"
-            app:lottie_fileName="people.json"
-            app:lottie_loop="true" />
-
+            android:textSize="@dimen/text_size_30_sp"
+            android:textColor="@color/white"
+            android:text="@string/app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </FrameLayout>
+
 </layout>
