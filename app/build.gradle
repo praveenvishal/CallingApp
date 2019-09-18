@@ -64,6 +64,12 @@ dependencies {
     implementation 'com.facebook.android:facebook-android-sdk:5.0.0'
     implementation 'io.michaelrocks:libphonenumber-android:8.10.14'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation 'net.soulwolf.widget:materialRadio:1.0.1'
+    implementation 'com.github.florent37:SingleDateAndTimePicker:2.0.5'
+    implementation 'com.nineoldandroids:library:2.4.0'
+    implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
+
+
 
 }
 apply plugin: 'com.google.gms.google-services'

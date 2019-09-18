@@ -4,5 +4,9 @@
     <dimen name="google_1x">8dp</dimen>
     <dimen name="fast_scroll_overlay_text_size">100dp</dimen>
     <dimen name="digit_width">40dp</dimen>
-
+    <dimen name="headerTextSize">22sp</dimen>
+    <dimen name="newsMoreTextSize">12sp</dimen>
+    <dimen name="loginCardRadius">20dp</dimen>
+    <dimen name="loginViewsMargin">20dp</dimen>
+    <dimen name="signup_text_margin_top">10dp</dimen>
 </resources>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:soulwolf="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        style="@style/loginParent"
+        android:orientation="vertical">
+
+        <ScrollView style="@style/parent">
+
+            <RelativeLayout style="@style/parent">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true">
+
+                    <LinearLayout
+                        style="@style/parent"
+                        android:background="@drawable/login_shape_bk"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            style="@style/parent"
+                            android:background="@drawable/ic_login_bk"
+                            android:contentDescription="login background" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="40dp"
+                    android:layout_weight="9"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:id="@+id/selectGender"
+                        fontPath="fonts/Nunito-Regular.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/select_your_gender"
+                        android:textColor="@color/white"
+                        android:layout_marginStart="@dimen/dimen_5dp"
+                        android:textSize="@dimen/text_size_30_sp" />
+
+                    <net.soulwolf.widget.materialradio.MaterialRadioGroup
+                        android:id="@+id/genderContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_50dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <net.soulwolf.widget.materialradio.MaterialRadioButton
+                            android:layout_width="@dimen/dp150"
+                            android:layout_height="wrap_content"
+                            soulwolf:mcAnimator="true"
+                            soulwolf:mcButton="@drawable/radio_button_boy_selector"
+                            soulwolf:mcChecked="true"
+                            soulwolf:mcPadding="@dimen/dimen_5dp"
+                            soulwolf:mcText="@string/male"
+                            soulwolf:mcTextColor="@drawable/radio_button_text_selector"
+                            soulwolf:mcTextSize="6sp" />
+
+                        <net.soulwolf.widget.materialradio.MaterialRadioButton
+                            android:layout_width="@dimen/dp150"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dimen_30dp"
+                            soulwolf:mcAnimator="true"
+                            soulwolf:mcButton="@drawable/radio_button_girl_selector"
+                            soulwolf:mcPadding="@dimen/dimen_5dp"
+                            soulwolf:mcText="@string/female"
+                            soulwolf:mcTextColor="@drawable/radio_button_text_selector"
+                            soulwolf:mcTextSize="6sp" />
+                    </net.soulwolf.widget.materialradio.MaterialRadioGroup>
+
+                    <TextView
+                        android:id="@+id/dobTextView"
+                        fontPath="fonts/Nunito-Regular.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/genderContainer"
+                        android:text="@string/select_your_dob"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_30_sp" />
+
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+</layout>
+
+

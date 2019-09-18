@@ -29,9 +29,9 @@ public class AuthActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
 
         switch (view.getId()) {
-            case R.id.buttonVerify:
-                verify();
-                break;
+            //case R.id.buttonVerify:
+             //   verify();
+              //  break;
         }
 
     }

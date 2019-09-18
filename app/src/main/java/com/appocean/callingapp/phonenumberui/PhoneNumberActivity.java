@@ -17,8 +17,27 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.appocean.callingapp.CreateRoomActivity;
+import com.appocean.callingapp.EnterDetailsActivity;
+import com.appocean.callingapp.R;
+import com.appocean.callingapp.phonenumberui.countrycode.Country;
+import com.appocean.callingapp.phonenumberui.countrycode.CountryUtils;
+import com.appocean.callingapp.phonenumberui.utility.Utility;
+import com.appocean.callingapp.util.Util;
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+
+import java.util.Arrays;
+import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
@@ -26,12 +45,6 @@ import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
-
-import com.appocean.callingapp.R;
-import com.appocean.callingapp.phonenumberui.countrycode.Country;
-import com.appocean.callingapp.phonenumberui.countrycode.CountryUtils;
-import com.appocean.callingapp.phonenumberui.utility.Utility;
-
 import io.michaelrocks.libphonenumber.android.NumberParseException;
 import io.michaelrocks.libphonenumber.android.PhoneNumberUtil;
 import io.michaelrocks.libphonenumber.android.Phonenumber;
@@ -49,6 +62,10 @@ public class PhoneNumberActivity extends AppCompatActivity {
     private static final int COUNTRYCODE_ACTION = 1;
     private static final int VERIFICATION_ACTION = 2;
     public String title = "";
+    private String TAG = PhoneNumberActivity.class.getSimpleName();
+    private CallbackManager callbackManager;
+    private List<String> READ_PERMISSION = Arrays.asList("email", /*"user_friends",*/ "public_profile", "user_photos"/*, "user_likes", "user_birthday"*/);
+    private AppCompatButton mFacebookLogin;
 
 
     @Override
@@ -56,7 +73,10 @@ public class PhoneNumberActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone_number);
         setUpUI();
-        setUpToolBar();
+        FacebookSdk.sdkInitialize(getApplicationContext());
+
+        callbackManager = CallbackManager.Factory.create();
+        //setUpToolBar();
 
     }
 
@@ -68,13 +88,20 @@ public class PhoneNumberActivity extends AppCompatActivity {
         btnSendConfirmationCode = findViewById(R.id.btnSendConfirmationCode);
         tvToolbarTitle = findViewById(R.id.tvToolbarTitle);
         mPhoneUtil = PhoneNumberUtil.createInstance(mActivity);
-
+        mFacebookLogin = findViewById(R.id.loginWithFb);
+        mFacebookLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signUpFromFacebook();
+            }
+        });
 //
         TelephonyManager tm = (TelephonyManager) getSystemService(getApplicationContext().TELEPHONY_SERVICE);
         String countryISO = tm.getNetworkCountryIso();
         String countryNumber = "";
         String countryName = "";
         Utility.log(countryISO);
+
 
         if (!TextUtils.isEmpty(countryISO)) {
             for (Country country : CountryUtils.getAllCountries(mActivity)) {
@@ -205,6 +232,8 @@ public class PhoneNumberActivity extends AppCompatActivity {
             if (data != null) {
 
             }
+        } else {
+            callbackManager.onActivityResult(requestCode, resultCode, data);
         }
     }
 
@@ -225,4 +254,38 @@ public class PhoneNumberActivity extends AppCompatActivity {
             return null;
         }
     }
+
+    private void signUpFromFacebook() {
+
+        LoginManager loginManager = LoginManager.getInstance();
+
+        loginManager.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                Log.e(TAG, loginResult.toString());
+                Intent intent = new Intent(PhoneNumberActivity.this, EnterDetailsActivity.class);
+                startActivity(intent);
+                finish();
+            }
+
+            @Override
+            public void onCancel() {
+                // App code
+            }
+
+            @Override
+            public void onError(FacebookException exception) {
+                // App code
+                Log.e(TAG, exception.toString());
+            }
+        });
+
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        if (accessToken == null)
+            loginManager.logInWithReadPermissions(this, READ_PERMISSION);
+        else
+            Util.getFbDetails(accessToken);
+    }
+
+
 }

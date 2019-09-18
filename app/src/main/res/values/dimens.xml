@@ -6,5 +6,14 @@
     <dimen name="dp8">8dp</dimen>
     <dimen name="dp80">80dp</dimen>
     <dimen name="dp200">200dp</dimen>
+    <dimen name="margin_250">250dp</dimen>
+    <dimen name="margin_45">45dp</dimen>
+    <dimen name="text_12">12sp</dimen>
+    <dimen name="dp20">20dp</dimen>
+    <dimen name="sp19">18sp</dimen>
     <dimen name="text_size_30_sp">30sp</dimen>
+    <dimen name="dimen_50dp">50dp</dimen>
+    <dimen name="dimen_5dp">5dp</dimen>
+    <dimen name="dimen_30dp">30dp</dimen>
+    <dimen name="txtSize_16">16sp</dimen>
 </resources>

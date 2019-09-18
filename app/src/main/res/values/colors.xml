@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#266DF5</color>
-    <color name="colorPrimaryDark">#002DEC</color>
-    <color name="colorAccent">#FF5722</color>
+    <color name="colorPrimary">#1F5BF3</color>
+    <color name="colorPrimaryDark">#0947E8</color>
+    <color name="colorAccent">#00A5FF</color>
     <color name="color_00000">#000000</color>
     <color name="color_grey">#E1E1E1E1</color>
     <color name="white">#ffffff</color>
+    <!--colors for modern ui-->
+    <color name="whiteTextColor">#fff</color>
+    <color name="primaryTextColor">#00a5ff</color>
+    <color name="loginBkColor">#f0f0f0</color>
 
+    <!--colros for card-->
+    <color name="whiteCardColor">#fff</color>
+    <color name="mc_title_bar">#FF16C2DD</color>
+    <color name="mc_state_pressed">#FF1088DD</color>
+    <color name="black">#000000</color>
 </resources>

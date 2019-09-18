@@ -7,6 +7,7 @@ import com.appocean.callingapp.databinding.ActivityCreateRoomBinding;
 import com.appocean.callingapp.firebase.FirebaseUsecase;
 import com.appocean.callingapp.firebase.FirebaseWrapper;
 import com.appocean.callingapp.model.Room;
+import com.appocean.callingapp.util.BaseActivity;
 import com.appocean.callingapp.util.ItemDecorationAlbumColumns;
 import com.appocean.callingapp.util.SessionManager;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -27,7 +28,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import static com.appocean.callingapp.util.PrefConstant.USER_ID;
 
-public class CreateRoomActivity extends AppCompatActivity implements RoomAdapter.ClickListener {
+public class CreateRoomActivity extends BaseActivity implements RoomAdapter.ClickListener {
     ActivityCreateRoomBinding mBinding;
     RoomAdapter roomAdapter;
     List<Room> roomList = new ArrayList<>();
@@ -94,7 +95,6 @@ public class CreateRoomActivity extends AppCompatActivity implements RoomAdapter
         if (!roomId.equals("") && uid != null && !uid.equals(""))
             mFirebase.deleteUser(roomId, uid);
         roomId = room.getRoomName();
-
         addUserToRoom(room);
         getRoomUser(room);
     }

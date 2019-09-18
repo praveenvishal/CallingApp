@@ -25,13 +25,12 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mBinding= DataBindingUtil.setContentView(this,R.layout.activity_splash);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_splash);
         mBinding.splashAnimation.playAnimation();
         textDelegate = new TextDelegate(mBinding.splashAnimation);
         mBinding.splashAnimation.setTextDelegate(textDelegate);
-        textDelegate.setText("NAME","TALKATIVE");
+        textDelegate.setText("Zello", "TALKATIVE");
         navigate();
-
     }
 
     private void navigate() {
@@ -39,13 +38,12 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 String uId = SessionManager.getInstance().getString(PrefConstant.USER_ID);
+                boolean isFirstTimeInstall = Util.isFirstTimeInstall();
                 if (!TextUtils.isEmpty(uId)) {
-                    Intent intent = new Intent(SplashActivity.this, CreateRoomActivity.class);
+                    Intent intent = new Intent(SplashActivity.this, EnterDetailsActivity.class);
                     startActivity(intent);
                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-
                 } else {
-                    boolean isFirstTimeInstall = Util.isFirstTimeInstall();
                     if (isFirstTimeInstall) {
                         Intent intent = new Intent(SplashActivity.this, TutorialActivity.class);
                         startActivity(intent);
@@ -55,13 +53,8 @@ public class SplashActivity extends AppCompatActivity {
                         startActivity(intent);
                         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                     }
-
-
                 }
-
                 finish();
-
-
             }
         }, SPLASH_TIME);
 
