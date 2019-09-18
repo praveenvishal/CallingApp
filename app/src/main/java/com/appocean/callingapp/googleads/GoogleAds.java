@@ -12,8 +12,8 @@ public class GoogleAds {
 
     public static String TAG = GoogleAds.class.getSimpleName();
     private static InterstitialAd interstitialAd;
-    //   private static final String AD_UNIT_ID = "ca-app-pub-4549181860437064/9726342866";
-    private static final String AD_UNIT_ID = "ca-app-pub-3940256099942544/1033173712";
+       private static final String AD_UNIT_ID = "ca-app-pub-4549181860437064/9726342866";
+    //private static final String AD_UNIT_ID = "ca-app-pub-3940256099942544/1033173712";
 
     public static void setInterstitialAd(Activity activity) {
         // Create the InterstitialAd and set the adUnitId.

@@ -2,6 +2,8 @@ package com.appocean.callingapp;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -56,7 +58,6 @@ public class CreateRoomActivity extends BaseActivity implements RoomAdapter.Clic
         initRecyclerView();
         mFirebase = new FirebaseWrapper(this);
         db = FirebaseFirestore.getInstance();
-
         GoogleAds.setInterstitialAd(this);
     }
 
@@ -134,6 +135,16 @@ public class CreateRoomActivity extends BaseActivity implements RoomAdapter.Clic
             }
         });
     }
+   /* private boolean checkRequiredPermission() {
+        for (String permission : MANDATORY_PERMISSIONS) {
+            if (checkCallingOrSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    requestPermissions(MANDATORY_PERMISSIONS, PERMISSION_REQUEST_CODE);
+                }
+            }
+        }
+        return false;
+    }*/
 
     private void addUserToRoom(Room room) {
         mFirebase.addUserToRoom(room, uid);

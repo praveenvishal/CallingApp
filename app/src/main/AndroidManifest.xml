@@ -34,9 +34,8 @@
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713" />
+            android:value="ca-app-pub-4549181860437064~9726342866" />
 
-        <!--        android:value="ca-app-pub-4549181860437064~9726342866"-->
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait"
@@ -78,8 +77,7 @@
             android:name=".CallActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/CallActivityTheme"></activity>
+            android:screenOrientation="portrait"></activity>
 
         <activity
             android:name=".phonenumberui.PhoneNumberActivity"

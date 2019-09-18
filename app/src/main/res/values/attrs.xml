@@ -27,4 +27,8 @@
     <attr format="string" name="title_of_mobile_verification"/>
 
   </declare-styleable>
+
+  <attr name="themebackground" format="color" />
+  <attr name="textColor" format="color" />
+  <attr name="textSize" format="dimension" />
 </resources>

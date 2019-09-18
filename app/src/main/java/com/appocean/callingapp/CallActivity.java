@@ -17,12 +17,12 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.media.projection.MediaProjection;
 import android.media.projection.MediaProjectionManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
@@ -30,6 +30,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 
 import com.appocean.callingapp.firebase.FirebaseUsecase;
 import com.appocean.callingapp.firebase.FirebaseWrapper;
@@ -132,12 +134,10 @@ public class CallActivity extends BaseActivity implements AppRTCClient.Signaling
 
     private static final int CAPTURE_PERMISSION_REQUEST_CODE = 1;
 
-    // List of mandatory application permissions.
-    private static final String[] MANDATORY_PERMISSIONS = {"android.permission.MODIFY_AUDIO_SETTINGS",
-            "android.permission.RECORD_AUDIO", "android.permission.INTERNET"};
 
     // Peer connection statistics callback period in ms.
     private static final int STAT_CALLBACK_PERIOD = 1000;
+    private static final int PERMISSION_REQUEST_CODE = 1001;
     private String roomId;
     private Room room;
 
@@ -244,7 +244,6 @@ public class CallActivity extends BaseActivity implements AppRTCClient.Signaling
         fullscreenRenderer.setEnableHardwareScaler(true /* enabled */);
         setSwappedFeeds(true /* isSwappedFeeds */);
         mFirebase = new FirebaseWrapper(this);
-        if (checkRequiredPermission()) return;
         Uri roomUri = intent.getData();
         if (roomUri == null) {
             // logAndToast(getString(R.string.missing_url));
@@ -333,16 +332,10 @@ public class CallActivity extends BaseActivity implements AppRTCClient.Signaling
 
     }
 
-    private boolean checkRequiredPermission() {
-        for (String permission : MANDATORY_PERMISSIONS) {
-            if (checkCallingOrSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
-                // logAndToast("Permission " + permission + " is not granted");
-                setResult(RESULT_CANCELED);
-                finish();
-                return true;
-            }
-        }
-        return false;
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     private void showCallFragment() {
@@ -480,6 +473,9 @@ public class CallActivity extends BaseActivity implements AppRTCClient.Signaling
     @Override
     public void onCallHangUp() {
         disconnect();
+        String uid = SessionManager.getInstance().getString(USER_ID);
+        if (!TextUtils.isEmpty(roomId) && !TextUtils.isEmpty(uid))
+            mFirebase.deleteUser(roomId, uid);
     }
 
     @Override
@@ -589,7 +585,6 @@ public class CallActivity extends BaseActivity implements AppRTCClient.Signaling
             audioManager.close();
             audioManager = null;
         }
-        mFirebase.deleteRoom(room);
         if (iceConnected && !isError) {
             setResult(RESULT_OK);
         } else {

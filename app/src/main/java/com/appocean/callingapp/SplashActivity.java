@@ -20,16 +20,11 @@ public class SplashActivity extends AppCompatActivity {
 
     private static final long SPLASH_TIME = 10000;
     ActivitySplashBinding mBinding;
-    TextDelegate textDelegate;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_splash);
-        mBinding.splashAnimation.playAnimation();
-        textDelegate = new TextDelegate(mBinding.splashAnimation);
-        mBinding.splashAnimation.setTextDelegate(textDelegate);
-        textDelegate.setText("Zello", "TALKATIVE");
         navigate();
     }
 
@@ -45,7 +40,7 @@ public class SplashActivity extends AppCompatActivity {
                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 } else {
                     if (isFirstTimeInstall) {
-                        Intent intent = new Intent(SplashActivity.this, TutorialActivity.class);
+                        Intent intent = new Intent(SplashActivity.this, CreateRoomActivity.class);
                         startActivity(intent);
                         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                     } else {
