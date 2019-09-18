@@ -128,4 +128,16 @@
     </style>
 
 
+    <style name="Theme1">
+        <!--      <item name="textColor">@color/theme1_back</item>
+        -->
+        <item name="background">@color/sky_blue</item>
+    </style>
+
+    <style name="Theme2">
+        <!--    <item name="textColor">@color/theme1_back</item>
+        -->
+        <item name="background">@color/green_apple</item>
+    </style>
+
 </resources>
