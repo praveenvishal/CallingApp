@@ -73,8 +73,7 @@
             android:name=".CallActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/CallActivityTheme"></activity>
+            android:screenOrientation="portrait"></activity>
 
         <activity
             android:name=".phonenumberui.PhoneNumberActivity"
