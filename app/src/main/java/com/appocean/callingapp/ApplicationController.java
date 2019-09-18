@@ -4,6 +4,9 @@ import android.app.Application;
 import android.content.Context;
 
 import com.appocean.callingapp.util.Util;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
@@ -16,6 +19,11 @@ public class ApplicationController extends Application {
         mInstance = this;
         Util.generateKey(this);
         initializeCalligraphy();
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
     }
 
     private void initializeCalligraphy() {

@@ -17,12 +17,12 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.media.projection.MediaProjection;
 import android.media.projection.MediaProjectionManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
@@ -135,7 +135,6 @@ public class CallActivity extends BaseActivity implements AppRTCClient.Signaling
     private static final int CAPTURE_PERMISSION_REQUEST_CODE = 1;
 
 
-
     // Peer connection statistics callback period in ms.
     private static final int STAT_CALLBACK_PERIOD = 1000;
     private static final int PERMISSION_REQUEST_CODE = 1001;
@@ -245,7 +244,6 @@ public class CallActivity extends BaseActivity implements AppRTCClient.Signaling
         fullscreenRenderer.setEnableHardwareScaler(true /* enabled */);
         setSwappedFeeds(true /* isSwappedFeeds */);
         mFirebase = new FirebaseWrapper(this);
-//        if (checkRequiredPermission()) return;
         Uri roomUri = intent.getData();
         if (roomUri == null) {
             // logAndToast(getString(R.string.missing_url));
@@ -333,8 +331,6 @@ public class CallActivity extends BaseActivity implements AppRTCClient.Signaling
         startCall();
 
     }
-
-
 
 
     @Override
@@ -477,6 +473,9 @@ public class CallActivity extends BaseActivity implements AppRTCClient.Signaling
     @Override
     public void onCallHangUp() {
         disconnect();
+        String uid = SessionManager.getInstance().getString(USER_ID);
+        if (!TextUtils.isEmpty(roomId) && !TextUtils.isEmpty(uid))
+            mFirebase.deleteUser(roomId, uid);
     }
 
     @Override
@@ -586,7 +585,6 @@ public class CallActivity extends BaseActivity implements AppRTCClient.Signaling
             audioManager.close();
             audioManager = null;
         }
-        mFirebase.deleteRoom(room);
         if (iceConnected && !isError) {
             setResult(RESULT_OK);
         } else {

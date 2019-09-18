@@ -16,4 +16,10 @@
     <color name="mc_title_bar">#FF16C2DD</color>
     <color name="mc_state_pressed">#FF1088DD</color>
     <color name="black">#000000</color>
+
+    <color name="welcome_text_color">#FF0000</color>
+    <color name="sky_blue">#6698FF</color>
+    <color name="green_apple">#629632</color>
+    <color name="theme1_back">#F4F0CB</color>
+
 </resources>

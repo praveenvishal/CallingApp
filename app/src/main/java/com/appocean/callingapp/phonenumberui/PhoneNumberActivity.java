@@ -21,12 +21,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.appocean.callingapp.CreateRoomActivity;
 import com.appocean.callingapp.EnterDetailsActivity;
 import com.appocean.callingapp.R;
 import com.appocean.callingapp.phonenumberui.countrycode.Country;
 import com.appocean.callingapp.phonenumberui.countrycode.CountryUtils;
 import com.appocean.callingapp.phonenumberui.utility.Utility;
+import com.appocean.callingapp.util.PrefConstant;
+import com.appocean.callingapp.util.SessionManager;
 import com.appocean.callingapp.util.Util;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -172,10 +173,8 @@ public class PhoneNumberActivity extends AppCompatActivity {
         if (getIntent().hasExtra("TITLE") && getIntent().getStringExtra("TITLE") != null && !getIntent().getStringExtra("TITLE").equalsIgnoreCase("")) {
             title = getIntent().getStringExtra("TITLE");
             getSupportActionBar().setTitle(title);
-
         } else {
             getSupportActionBar().setTitle("Enter your Phone Number");
-
         }
     }
 
@@ -262,6 +261,7 @@ public class PhoneNumberActivity extends AppCompatActivity {
         loginManager.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
+                SessionManager.getInstance().save(PrefConstant.USER_ID, loginResult.getAccessToken().getUserId());
                 Log.e(TAG, loginResult.toString());
                 Intent intent = new Intent(PhoneNumberActivity.this, EnterDetailsActivity.class);
                 startActivity(intent);

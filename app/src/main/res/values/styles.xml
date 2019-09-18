@@ -128,4 +128,14 @@
     </style>
 
 
+    <style name="Theme1">
+        <item name="textColor">@color/black</item>
+        <item name="themebackground">@color/sky_blue</item>
+    </style>
+
+    <style name="Theme2">
+            <item name="textColor">@color/welcome_text_color</item>
+        <item name="themebackground">@color/green_apple</item>
+    </style>
+
 </resources>
