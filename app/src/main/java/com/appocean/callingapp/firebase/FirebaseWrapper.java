@@ -104,7 +104,7 @@ public class FirebaseWrapper implements FirebaseUsecase {
                     document = task.getResult();
                     queryCallback.onQueryResult(document);
                 } else {
-                    Log.w("MainActivity", "Error getting documents.", task.getException());
+                    Log.w("EnterDetailsActivity", "Error getting documents.", task.getException());
                 }
             }
         });

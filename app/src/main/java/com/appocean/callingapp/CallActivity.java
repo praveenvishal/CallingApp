@@ -41,6 +41,7 @@ import com.appocean.callingapp.rtc.LooperExecutor;
 import com.appocean.callingapp.rtc.PeerConnectionClient;
 import com.appocean.callingapp.rtc.UnhandledExceptionHandler;
 import com.appocean.callingapp.rtc.WebSocketRTCClient;
+import com.appocean.callingapp.util.BaseActivity;
 import com.appocean.callingapp.util.SessionManager;
 
 import org.webrtc.Camera1Enumerator;
@@ -75,7 +76,7 @@ import static com.appocean.callingapp.util.PrefConstant.USER_ID;
  * Activity for peer connection call setup, call waiting
  * and call view.
  */
-public class CallActivity extends Activity implements AppRTCClient.SignalingEvents,
+public class CallActivity extends BaseActivity implements AppRTCClient.SignalingEvents,
         PeerConnectionClient.PeerConnectionEvents,
         CallFragment.OnCallEvents {
     private static final String TAG = CallActivity.class.getSimpleName();

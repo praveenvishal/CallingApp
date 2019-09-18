@@ -22,6 +22,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.appocean.callingapp.CreateRoomActivity;
+import com.appocean.callingapp.EnterDetailsActivity;
 import com.appocean.callingapp.R;
 import com.appocean.callingapp.phonenumberui.countrycode.Country;
 import com.appocean.callingapp.phonenumberui.countrycode.CountryUtils;
@@ -262,7 +263,7 @@ public class PhoneNumberActivity extends AppCompatActivity {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 Log.e(TAG, loginResult.toString());
-                Intent intent = new Intent(PhoneNumberActivity.this, CreateRoomActivity.class);
+                Intent intent = new Intent(PhoneNumberActivity.this, EnterDetailsActivity.class);
                 startActivity(intent);
                 finish();
             }

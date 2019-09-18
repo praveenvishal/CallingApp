@@ -27,6 +27,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import com.appocean.callingapp.CreateRoomActivity;
+import com.appocean.callingapp.EnterDetailsActivity;
 import com.appocean.callingapp.R;
 import com.appocean.callingapp.phonenumberui.utility.Utility;
 import com.appocean.callingapp.util.PrefConstant;
@@ -148,7 +149,7 @@ public class VerificationCodeActivity extends AppCompatActivity {
                             new Handler().postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Intent intent = new Intent(VerificationCodeActivity.this, CreateRoomActivity.class);
+                                    Intent intent = new Intent(VerificationCodeActivity.this, EnterDetailsActivity.class);
                                     startActivity(intent);
                                     finish();
                                 }

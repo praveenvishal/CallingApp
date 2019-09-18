@@ -17,13 +17,15 @@ import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 
+import com.appocean.callingapp.util.BaseActivity;
+
 import org.webrtc.Camera2Enumerator;
 import org.webrtc.voiceengine.WebRtcAudioUtils;
 
 /**
  * Settings activity for AppRTC.
  */
-public class SettingsActivity extends Activity implements OnSharedPreferenceChangeListener {
+public class SettingsActivity extends BaseActivity implements OnSharedPreferenceChangeListener {
   private SettingsFragment settingsFragment;
   private String keyprefVideoCall;
   private String keyprefScreencapture;
