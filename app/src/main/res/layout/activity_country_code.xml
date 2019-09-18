@@ -10,10 +10,10 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="?attr/background"
         android:minHeight="?attr/actionBarSize"
-        local:popupTheme="@style/ToolBarStyle"
-        android:theme="@style/ToolbarColoredBackArrow">
+        android:theme="@style/ToolbarColoredBackArrow"
+        local:popupTheme="@style/ToolBarStyle">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -45,10 +45,10 @@
             android:id="@+id/rlSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/rounded_corner_white_rectangle_border_grey"
             android:orientation="vertical">
 
@@ -58,8 +58,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:layout_marginEnd="4dp"
                 android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
                 android:src="@drawable/ic_graysearch" />
 
             <androidx.appcompat.widget.AppCompatEditText

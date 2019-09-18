@@ -2,13 +2,12 @@ package com.appocean.callingapp;
 
 import android.os.Bundle;
 
-import androidx.databinding.DataBindingUtil;
-
 import com.appocean.callingapp.databinding.ActivityEnterDetailsBinding;
 import com.appocean.callingapp.util.BaseActivity;
-import com.github.florent37.singledateandtimepicker.dialog.SingleDateAndTimePickerDialog;
 
 import java.util.Date;
+
+import androidx.databinding.DataBindingUtil;
 
 public class EnterDetailsActivity extends BaseActivity {
 
@@ -18,7 +17,7 @@ public class EnterDetailsActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_enter_details);
-        new SingleDateAndTimePickerDialog.Builder(this)
+      /*  new SingleDateAndTimePickerDialog.Builder(this)
                 .bottomSheet()
                 .curved()
                 .displayMinutes(false)
@@ -33,7 +32,7 @@ public class EnterDetailsActivity extends BaseActivity {
                         setSelectedDate(date);
                     }
                 })
-                .display();
+                .display();*/
 
     }
 
