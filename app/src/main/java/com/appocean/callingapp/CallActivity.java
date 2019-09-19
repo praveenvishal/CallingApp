@@ -308,7 +308,7 @@ public class CallActivity extends BaseActivity implements AppRTCClient.Signaling
         // Create connection client. Use DirectRTCClient if room name is an IP otherwise use the
         // standard WebSocketRTCClient.
         if (loopback || !DirectRTCClient.IP_PATTERN.matcher(roomId).matches()) {
-            appRtcClient = new WebSocketRTCClient(this, new LooperExecutor());
+            appRtcClient = new WebSocketRTCClient(this);
         } else {
             Log.i(TAG, "Using DirectRTCClient because room name looks like an IP.");
             appRtcClient = new DirectRTCClient(this);
